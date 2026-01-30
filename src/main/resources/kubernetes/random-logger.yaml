@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-generator
+  labels:
+    app: log-practicer
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: log-practicer
+  template:
+    metadata:
+      labels:
+        app: log-practicer
+    spec:
+      containers:
+        - name: logger
+          image: chentex/random-logger
+          args: ["1000", "4000"]
